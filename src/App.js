@@ -1,30 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import Input from './Input/Input'
+import List from './List/List'
+
 import './App.css';
 
 function Task(value) {
-  this.value = value;
   this.id = new Date().getTime();
-}
+  this.value = value;
+  this.isDone = false;
+};
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const addTask = (event) => {
-    event.preventDefault();
-    setTasks(tasks => [
-      ...tasks,
-      new Task(event.target[0].value)
-    ]);
+  useEffect(() => {
+    const tasks = localStorage.getItem('tasks')
+    tasks && setTasks(JSON.parse(tasks))
+  }, []);
+
+  const addTask = (value) => {
+    const updatedTasks = [...tasks, new Task(value)];
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   return (
-    <>
-      <form onSubmit={addTask}>
-        <input placeholder="What needs to be done?"></input>
-      </form>
-
-      {tasks.map(task => <p key={task.id}>{task.value}</p>)}
-    </>
+    <main>
+      <Input addTask={addTask}></Input>
+      <List list={tasks}></List>
+    </main>
   );
 }
 
