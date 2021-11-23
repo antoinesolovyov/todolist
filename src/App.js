@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import Input from './Input/Input'
-import List from './List/List'
+import Input from './components/Input/Input'
+import List from './components/List/List'
 
 import './App.css';
 
@@ -12,23 +12,23 @@ function Task(value) {
 };
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [list, setList] = useState([]);
 
   useEffect(() => {
-    const tasks = localStorage.getItem('tasks')
-    tasks && setTasks(JSON.parse(tasks))
+    const list = localStorage.getItem('list')
+    list && setList(JSON.parse(list))
   }, []);
 
   const addTask = (value) => {
-    const updatedTasks = [...tasks, new Task(value)];
-    setTasks(updatedTasks);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    const updatedList = [...list, new Task(value)];
+    setList(updatedList);
+    localStorage.setItem('list', JSON.stringify(updatedList));
   };
 
   return (
     <main>
       <Input addTask={addTask}></Input>
-      <List list={tasks}></List>
+      <List list={list} updateList={setList}></List>
     </main>
   );
 }

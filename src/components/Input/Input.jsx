@@ -22,11 +22,12 @@ function Input(props) {
   return (
     <form onSubmit={submit}>
       <input
+        className="inputTask"
         value={value} 
         onChange={change}
         placeholder="What needs to be done?"
-      ></input>
-      <button></button>
+      />
+      <button type="submit"/>
     </form>
   );
 }

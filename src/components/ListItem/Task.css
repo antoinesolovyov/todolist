@@ -1,0 +1,35 @@
+td {
+  margin: 0px;
+  padding: 0px;
+
+  width: 48px;
+  height: 48px;
+}
+
+.checkbox {
+  background-image: url(../../assets/square.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.checked {
+  background-image: url(../../assets/check-square.svg);
+}
+
+.task {
+  padding: 0px;
+  width: 372px;
+}
+
+.editTask {
+  height: 48px;
+  width: 356px;
+}
+
+.remove {
+  background-image: url(../../assets/trash.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}

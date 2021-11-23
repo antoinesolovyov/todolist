@@ -8,6 +8,4 @@ body {
 
 main {
   margin-top: 96px;
-  display: flex;
-  flex-direction: column;
 }
